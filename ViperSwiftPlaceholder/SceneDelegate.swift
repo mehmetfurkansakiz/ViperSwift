@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  ViperSwiftPlaceholder
-//
-//  Created by furkan sakız on 21.07.2024.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -17,6 +10,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let initialViewController = HomeRouterInput().start(viewEntity: HomeViewEntity(title: "Page title with HomeViewEntity on scene delegate."))
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [initialViewController]
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
